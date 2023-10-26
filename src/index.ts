@@ -4,6 +4,7 @@
 import { getCodeProjectCardsContent } from './api.js';
 import convertGifToPng from 'gif-png-converter';
 import dotenv from 'dotenv';
+import { rm } from 'fs';
 
 dotenv.config();
 
@@ -28,10 +29,9 @@ export default async function main(baseDir: string) {
     // Skip projects without a preview image
     if (!previewImageUrl) continue;
 
-    const previewImageFilename = previewImageUrl.split('/').pop() as string;
-    const filePath = `${baseDir}/${project.slug}/${previewImageFilename}`;
+    const filePath = `${baseDir}/${project.slug}`;
 
-    console.log(`Downloading ${previewImageUrl} to ${filePath}`);
+    console.log(`Downloading ${previewImageUrl} to ${filePath}\n`);
 
     try {
       await convertGifToPng(previewImageUrl, filePath);
