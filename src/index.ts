@@ -4,7 +4,6 @@
 import { getCodeProjectCardsContent } from './api.js';
 import convertGifToPng from 'gif-png-converter';
 import dotenv from 'dotenv';
-import { rm } from 'fs';
 
 dotenv.config();
 
